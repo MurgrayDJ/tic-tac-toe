@@ -7,6 +7,7 @@
 # -------------
 
 class Board
+    attr_accessor :board
 
     def initialize
         @board = [[" "," "," "],
@@ -16,7 +17,7 @@ class Board
 
     def print_board
         # p @board
-        puts "-------------"
+        puts "\n-------------"
         @board.each do |row|
             puts "| #{row[0]} | #{row[1]} | #{row[2]} |"
             puts "-------------"
@@ -29,8 +30,8 @@ class Board
 
 end
 
-board = Board.new
-board.print_board
+# board = Board.new
+# board.print_board
 
 # board.update_board(2,0,"X")
 # board.print_board
