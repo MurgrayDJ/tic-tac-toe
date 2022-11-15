@@ -1,20 +1,26 @@
-# X | O | X
-# ----------
-# O | X | O
-# ----------
-# X | O | X
-
+# -------------
+# | X | O | X |
+# -------------
+# | O | X | O |
+# -------------
+# | X | O | X |
+# -------------
 
 class Board
 
     def initialize
-        @board = [[nil,nil,nil],
-                [nil,nil,nil],
-                [nil,nil,nil]]
+        @board = [[" "," "," "],
+                [" "," "," "],
+                [" "," "," "]]
     end
 
     def print_board
-        p @board
+        # p @board
+        puts "-------------"
+        @board.each do |row|
+            puts "| #{row[0]} | #{row[1]} | #{row[2]} |"
+            puts "-------------"
+        end
     end
 
 end
