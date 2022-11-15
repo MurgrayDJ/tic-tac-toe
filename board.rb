@@ -23,7 +23,16 @@ class Board
         end
     end
 
+    def update_board(row, column, letter)
+        @board[row][column] = letter
+    end
+
 end
 
 board = Board.new
 board.print_board
+
+# board.update_board(2,0,"X")
+# board.print_board
+# board.update_board(0,1,"O")
+# board.print_board
