@@ -32,6 +32,9 @@ class PlayGame
             valid_responses.each do |valid_response|
                 if response == valid_response
                     return response
+                elsif response.downcase == "exit"
+                    puts "See ya later!"
+                    exit!
                 end
             end
             response = nil
