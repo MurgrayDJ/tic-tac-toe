@@ -13,6 +13,15 @@ class Board
         @board = [[" "," "," "],
                 [" "," "," "],
                 [" "," "," "]]
+        # @ways_to_win = {
+        #     :row1 => ["00","01","02"],
+        #     :row2 => ["10","11","12"],
+        #     :row3 => ["20","21","22"],
+        #     :col1 => ["00","10","20"],
+        #     :col2 => ["01","11","21"], 
+        #     :col3 => ["02","12","22"],
+        #     :dia1 => ["00","11","22"],
+        #     :dia2 => ["20","11","02"]}
     end
 
     def print_board
@@ -26,6 +35,32 @@ class Board
 
     def update_board(row, column, letter)
         @board[row][column] = letter
+    end
+
+    def check_for_win
+        @board.each_with_index do |row, row_num|
+            if row.uniq.length == 1
+                return "row #{row_num}"
+            end
+        end
+
+        @board.transpose.each_with_index do |column, column_num|
+            if column.uniq.length == 1
+                return "column #{column_num}"
+            end
+        end
+
+        daigonal1 = [@board[0][0], @board[1][1], @board[2][2]]
+        if daigonal1.uniq.length == 1
+            return "diagonal down"
+        end
+
+        daigonal2 = [@board[2][0], @board[1][1], @board[0][2]]
+        if daigonal2.uniq.length == 1
+            return "diagonal up"
+        end
+
+        return "no winner"
     end
 
 end
