@@ -3,15 +3,21 @@ require './player.rb'
 
 class PlayGame
     def initialize
+        puts "Welcome to Tic-Tac-Toe! Please enter the following player data: "
         @player1 = createPlayer(1)
         @player2 = createPlayer(2)
         @board = Board.new
+
+        puts "Hi #{@player1.name} and #{@player2.name}! Let's get started!"
         play_round
     end
 
     def createPlayer(player_num)
-        print "Enter player #{player_num} name: "
-        name = gets.chomp
+        name = ''
+        while !name.match?(/\A[a-zA-Z'-]+\z/)
+            print "Enter player #{player_num} name: "
+            name = gets.chomp
+        end
 
         letter = get_valid_data("Enter a letter: ", nil, ("A".."z")).upcase
 
@@ -69,6 +75,7 @@ class PlayGame
 
     def play_round
         current_player = random_player
+        puts "You can type exit at any time to end the game."
 
         while no_winner? && @board.not_full?
             make_a_move(current_player)
