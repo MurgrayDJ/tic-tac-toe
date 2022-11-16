@@ -24,12 +24,16 @@ class Board
     end
 
     def print_board
-        puts "\n         columns"
-        puts "        0   1   2"
-        puts "      -------------"
+        puts "\n          Columns"
+        puts "         0   1   2"
+        puts "       -------------"
         @board.each_with_index do |row, row_num|
-            puts "row #{row_num} | #{row[0]} | #{row[1]} | #{row[2]} |"
-            puts "      -------------"
+            if row_num == 1 
+                puts "Rows #{row_num} | #{row[0]} | #{row[1]} | #{row[2]} |"
+            else
+                puts "     #{row_num} | #{row[0]} | #{row[1]} | #{row[2]} |"
+            end
+            puts "       -------------"
         end
         puts
     end
