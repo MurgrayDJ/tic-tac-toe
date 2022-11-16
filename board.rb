@@ -39,28 +39,32 @@ class Board
 
     def check_for_win
         @board.each_with_index do |row, row_num|
-            if row.uniq.length == 1
-                return "row #{row_num}"
+            condensed = row.uniq
+            if condensed.length == 1
+                return ["row #{row_num}", condensed[0]]
             end
         end
 
         @board.transpose.each_with_index do |column, column_num|
-            if column.uniq.length == 1
-                return "column #{column_num}"
+            condensed = column.uniq
+            if condensed.length == 1
+                return ["column #{column_num}", condensed[0]]
             end
         end
 
         daigonal1 = [@board[0][0], @board[1][1], @board[2][2]]
-        if daigonal1.uniq.length == 1
-            return "diagonal down"
+        condensed = daigonal1.uniq
+        if condensed.length == 1
+            return ["diagonal down", condensed[0]]
         end
 
         daigonal2 = [@board[2][0], @board[1][1], @board[0][2]]
-        if daigonal2.uniq.length == 1
-            return "diagonal up"
+        condensed = daigonal2.uniq
+        if condensed.length == 1
+            return ["diagonal up", condensed[0]]
         end
 
-        return "no winner"
+        return ["no winner", nil]
     end
 
 end

@@ -45,6 +45,22 @@ class PlayGame
 
         @board.board[row.to_i][column.to_i] = player.letter
     end
+
+    def win?
+        win_info = @board.check_for_win
+
+        if win_info[1].nil?
+            return false
+        else
+            if player1.letter = win_info[1]
+                puts "#{player1.name} has won on #{win_info[0]}!"
+            else
+                puts "#{player1.name} has won on #{win_info[0]}!"
+            end
+            
+            return true
+        end
+    end
 end
 
 game = PlayGame.new()
