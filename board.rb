@@ -26,11 +26,12 @@ class Board
 
     def print_board
         # p @board
-        puts "\n    0   1   2"
-        puts "  -------------"
+        puts "\n         columns"
+        puts "        0   1   2"
+        puts "      -------------"
         @board.each_with_index do |row, row_num|
-            puts "#{row_num} | #{row[0]} | #{row[1]} | #{row[2]} |"
-            puts "  -------------"
+            puts "row #{row_num} | #{row[0]} | #{row[1]} | #{row[2]} |"
+            puts "      -------------"
         end
     end
 
@@ -90,8 +91,8 @@ class Board
 
 end
 
-# board = Board.new
-# board.print_board
+ board = Board.new
+ board.print_board
 
 # board.update_board(2,0,"X")
 # board.print_board
