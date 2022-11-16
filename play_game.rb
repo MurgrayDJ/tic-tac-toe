@@ -36,14 +36,26 @@ class PlayGame
     def make_a_move(player)
         @board.print_board
         puts "#{player.name} it's your turn!"
+        chosen_spot = " "
 
-        prompt = "Please enter a row number (0-2): "
-        row = get_valid_data(prompt, nil, ("0".."2"))
+        while chosen_spot.strip.empty?
+            prompt = "Please enter a row number (0-2): "
+            row = get_valid_data(prompt, nil, ("0".."2"))
 
-        prompt = "Please enter a column number (0-2): "
-        column = get_valid_data(prompt, nil, ("0".."2"))
+            prompt = "Please enter a column number (0-2): "
+            column = get_valid_data(prompt, nil, ("0".."2"))
+            
+            chosen_spot = @board.board[row.to_i][column.to_i]
+            
+            if !chosen_spot.strip.empty?
+                puts "Looks like that spot is taken. :( Try another one!"
+                chosen_spot = " "
+            else
+                chosen_spot = player.letter
+            end    
+        end
 
-        @board.board[row.to_i][column.to_i] = player.letter
+        @board.board[row.to_i][column.to_i] = chosen_spot
     end
 
     def random_player
