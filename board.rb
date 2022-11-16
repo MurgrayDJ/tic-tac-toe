@@ -26,10 +26,11 @@ class Board
 
     def print_board
         # p @board
-        puts "\n-------------"
-        @board.each do |row|
-            puts "| #{row[0]} | #{row[1]} | #{row[2]} |"
-            puts "-------------"
+        puts "\n    0   1   2"
+        puts "  -------------"
+        @board.each_with_index do |row, row_num|
+            puts "#{row_num} | #{row[0]} | #{row[1]} | #{row[2]} |"
+            puts "  -------------"
         end
     end
 
