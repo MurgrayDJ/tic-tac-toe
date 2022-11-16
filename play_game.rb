@@ -100,6 +100,9 @@ class PlayGame
         if play_again == "Y"
             @board.reset_board
             play_round
+        else
+            puts "See ya later!"
+            exit!
         end
     end
 
