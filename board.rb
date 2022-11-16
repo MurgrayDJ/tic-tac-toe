@@ -91,8 +91,8 @@ class Board
 
 end
 
- board = Board.new
- board.print_board
+# board = Board.new
+# board.print_board
 
 # board.update_board(2,0,"X")
 # board.print_board
