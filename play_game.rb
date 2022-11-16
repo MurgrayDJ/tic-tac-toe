@@ -78,6 +78,8 @@ class PlayGame
                 current_player = @player1
             end
         end
+        
+        @board.print_board
     end
 
     def no_winner?
@@ -86,7 +88,7 @@ class PlayGame
         if win_info[1].nil?
             return true
         else
-            if @player1.letter = win_info[1]
+            if @player1.letter == win_info[1]
                 puts "#{@player1.name} has won on #{win_info[0]}!"
             else
                 puts "#{@player2.name} has won on #{win_info[0]}!"
