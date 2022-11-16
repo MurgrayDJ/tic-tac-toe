@@ -79,7 +79,18 @@ class PlayGame
             end
         end
         
+        restart_game
+    end
+
+    def restart_game
         @board.print_board
+
+        play_again = get_valid_data("Play again? (Y/N): ", nil, ["Y", "N"])
+        
+        if play_again == "Y"
+            @board.reset_board
+            play_round
+        end
     end
 
     def no_winner?

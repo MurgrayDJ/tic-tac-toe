@@ -10,22 +10,20 @@ class Board
     attr_accessor :board
 
     def initialize
+        setup_board
+    end
+
+    def reset_board
+        setup_board
+    end
+
+    def setup_board
         @board = [[" "," "," "],
                 [" "," "," "],
                 [" "," "," "]]
-        # @ways_to_win = {
-        #     :row1 => ["00","01","02"],
-        #     :row2 => ["10","11","12"],
-        #     :row3 => ["20","21","22"],
-        #     :col1 => ["00","10","20"],
-        #     :col2 => ["01","11","21"], 
-        #     :col3 => ["02","12","22"],
-        #     :dia1 => ["00","11","22"],
-        #     :dia2 => ["20","11","02"]}
     end
 
     def print_board
-        # p @board
         puts "\n         columns"
         puts "        0   1   2"
         puts "      -------------"
@@ -91,11 +89,3 @@ class Board
     end
 
 end
-
-# board = Board.new
-# board.print_board
-
-# board.update_board(2,0,"X")
-# board.print_board
-# board.update_board(0,1,"O")
-# board.print_board
