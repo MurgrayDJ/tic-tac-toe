@@ -17,11 +17,15 @@ class Board
         setup_board
     end
 
+    private
+
     def setup_board
         @board = [[" "," "," "],
                 [" "," "," "],
                 [" "," "," "]]
     end
+
+    public
 
     def print_board
         puts "\n          Columns"
@@ -36,10 +40,6 @@ class Board
             puts "       -------------"
         end
         puts
-    end
-
-    def update_board(row, column, letter)
-        @board[row][column] = letter
     end
 
     def not_full?
