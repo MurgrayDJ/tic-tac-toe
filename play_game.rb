@@ -6,7 +6,7 @@ class PlayGame
         @player1 = createPlayer(1)
         @player2 = createPlayer(2)
         @board = Board.new
-        make_a_move(@player1)
+        play_round
     end
 
     def createPlayer(player_num)
@@ -46,19 +46,41 @@ class PlayGame
         @board.board[row.to_i][column.to_i] = player.letter
     end
 
-    def win?
+    def random_player
+        one_or_two = rand 1..2
+        if one_or_two == 1
+            return @player1
+        else
+            return @player2
+        end
+    end
+
+    def play_round
+        current_player = random_player
+
+        while no_winner? && @board.not_full?
+            make_a_move(current_player)
+            if current_player == @player1
+                current_player = @player2
+            else
+                current_player = @player1
+            end
+        end
+    end
+
+    def no_winner?
         win_info = @board.check_for_win
 
         if win_info[1].nil?
-            return false
+            return true
         else
-            if player1.letter = win_info[1]
-                puts "#{player1.name} has won on #{win_info[0]}!"
+            if @player1.letter = win_info[1]
+                puts "#{@player1.name} has won on #{win_info[0]}!"
             else
-                puts "#{player1.name} has won on #{win_info[0]}!"
+                puts "#{@player2.name} has won on #{win_info[0]}!"
             end
             
-            return true
+            return false
         end
     end
 end
