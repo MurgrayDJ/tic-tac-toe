@@ -33,6 +33,7 @@ class Board
             puts "row #{row_num} | #{row[0]} | #{row[1]} | #{row[2]} |"
             puts "      -------------"
         end
+        puts
     end
 
     def update_board(row, column, letter)
