@@ -1,5 +1,5 @@
-require './board.rb'
-require './player.rb'
+require_relative 'board.rb'
+require_relative 'player.rb'
 
 class PlayGame
     def initialize
