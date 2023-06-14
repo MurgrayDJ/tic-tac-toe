@@ -54,24 +54,21 @@ class Board
         return false
     end
 
-    def check_for_win
-        @board.each_with_index do |row, row_num|
-            unless row[0].strip.empty?
-                condensed = row.uniq
-                if condensed.length == 1
-                    return ["row #{row_num}", condensed[0]]
-                end
+    def check_row_or_column(the_board, row_type)
+        the_board.each_with_index do |row, row_num|
+            condensed = row.uniq
+            if condensed.length == 1 && condensed[0] != " "
+                return ["#{row_type} #{row_num}", condensed[0]]
             end
-        end
+        end   
+        nil 
+    end
 
-        @board.transpose.each_with_index do |column, column_num|
-            unless column[0].strip.empty?
-                condensed = column.uniq
-                if condensed.length == 1
-                    return ["column #{column_num}", condensed[0]]
-                end
-            end
-        end
+    def check_for_win
+        win_info = check_row_or_column(@board, 'row')
+        return win_info unless win_info.nil? 
+        win_info = check_row_or_column(@board.transpose, 'column')
+        return win_info unless win_info.nil?
 
         daigonal1 = [@board[0][0], @board[1][1], @board[2][2]]
         unless daigonal1[0].strip.empty?
