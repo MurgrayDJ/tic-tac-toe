@@ -64,6 +64,14 @@ class Board
         nil 
     end
 
+    def check_diagonals(diagonal, diagonal_type)
+        condensed = diagonal.uniq
+        if condensed.length == 1 && condensed[0] != " "
+            return [diagonal_type, condensed[0]]
+        end
+        nil
+    end
+
     def check_for_win
         win_info = check_row_or_column(@board, 'row')
         return win_info unless win_info.nil? 
@@ -71,20 +79,12 @@ class Board
         return win_info unless win_info.nil?
 
         daigonal1 = [@board[0][0], @board[1][1], @board[2][2]]
-        unless daigonal1[0].strip.empty?
-            condensed = daigonal1.uniq
-            if condensed.length == 1
-                return ["diagonal down", condensed[0]]
-            end
-        end
+        win_info = check_diagonals(daigonal1, 'diagonal down')
+        return win_info unless win_info.nil? 
 
         daigonal2 = [@board[2][0], @board[1][1], @board[0][2]]
-        unless daigonal2[0].strip.empty?
-            condensed = daigonal2.uniq
-            if condensed.length == 1
-                return ["diagonal up", condensed[0]]
-            end
-        end
+        win_info = check_diagonals(daigonal2, 'diagonal up')
+        return win_info unless win_info.nil? 
 
         return ["no winner", nil]
     end
