@@ -42,16 +42,16 @@ class Board
         puts
     end
 
-    def not_full?
+    def full?
         @board.each do |row|
             row.each do |spot|
                 if spot.strip.empty?
-                    return true
+                    return false
                 end
             end
         end
         puts "Looks like a tie! :O Game over!"
-        return false
+        return true
     end
 
     def check_row_or_column(the_board, row_type)

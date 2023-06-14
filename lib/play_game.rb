@@ -80,7 +80,7 @@ class PlayGame
         current_player = random_player
         puts "You can type exit at any time to end the game."
 
-        while no_winner? && @board.not_full?
+        until winner? || @board.full?
             make_a_move(current_player)
             if current_player == @player1
                 current_player = @player2
@@ -106,11 +106,11 @@ class PlayGame
         end
     end
 
-    def no_winner?
+    def winner?
         win_info = @board.check_for_win
 
         if win_info[1].nil?
-            return true
+            return false
         else
             if @player1.letter == win_info[1]
                 puts "#{@player1.name} has won on #{win_info[0]}!"
@@ -118,7 +118,7 @@ class PlayGame
                 puts "#{@player2.name} has won on #{win_info[0]}!"
             end
             
-            return false
+            return true
         end
     end
 end
