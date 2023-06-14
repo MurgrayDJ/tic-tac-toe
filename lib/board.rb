@@ -78,12 +78,12 @@ class Board
         win_info = check_row_or_column(@board.transpose, 'column')
         return win_info unless win_info.nil?
 
-        daigonal1 = [@board[0][0], @board[1][1], @board[2][2]]
-        win_info = check_diagonals(daigonal1, 'diagonal down')
+        daigonal_down = [@board[0][0], @board[1][1], @board[2][2]]
+        win_info = check_diagonals(daigonal_down, 'diagonal down')
         return win_info unless win_info.nil? 
 
-        daigonal2 = [@board[2][0], @board[1][1], @board[0][2]]
-        win_info = check_diagonals(daigonal2, 'diagonal up')
+        daigonal_up = [@board[2][0], @board[1][1], @board[0][2]]
+        win_info = check_diagonals(daigonal_up, 'diagonal up')
         return win_info unless win_info.nil? 
 
         return ["no winner", nil]
