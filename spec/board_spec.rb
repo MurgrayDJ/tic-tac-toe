@@ -1,18 +1,17 @@
 require_relative '../lib/board.rb'
 
 RSpec.describe Board do
-
+  board_class = described_class.new 
+  
   describe '#full?' do
     context 'board is empty' do
       it 'shows that board is not full' do
-        board_class = described_class.new 
         expect(board_class.full?).to be(false)
       end
     end
 
     context 'board is partially filled' do
       it 'shows that board is not full' do
-        board_class = described_class.new 
         board_class.board = [["X","O","X"],
         ["O"," "," "],
         [" "," "," "]]
@@ -22,7 +21,6 @@ RSpec.describe Board do
 
     context 'board is full' do
       it 'shows that board is full' do
-        board_class = described_class.new 
         board_class.board = [["X","O","X"],
         ["O","X","O"],
         ["X","O","X"]]
@@ -30,6 +28,5 @@ RSpec.describe Board do
       end
     end
   end
-
 
 end
